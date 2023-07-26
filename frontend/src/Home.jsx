@@ -9,11 +9,13 @@ import axios from "axios";
 const Home = () => {
 
 
+
   const checkoutHandler = async (amount) => {
 
-    const {data:{key} } = await axios.get("http://localhost:4000/api/getkey")
-
-    const { data: { order } } = await axios.post("http://localhost:4000/api/checkout", {
+    const { data: { key } } = await axios.get("https://razorpay-payment-gateway-backend-mj.onrender.com/api/getkey")
+    // http://localhost:4000/api/getkey
+    const { data: { order } } = await axios.post("https://razorpay-payment-gateway-backend-mj.onrender.com/api/checkout", {
+      // http://localhost:4000/api/checkout
       amount
     })
 
@@ -25,23 +27,24 @@ const Home = () => {
       description: "Razorpay-payment-gateway test mode  ",
       image: "https://avatars.githubusercontent.com/u/58311460?v=4",
       order_id: order.id,
-      callback_url: "http://localhost:4000/api/paymentverification",
+      callback_url: "https://razorpay-payment-gateway-backend-mj.onrender.com/api/paymentverification",
+      // http://localhost:4000/api/paymentverification
       prefill: {
-        name: "Gaurav Kumar",
-        email: "gaurav.kumar@example.com",
-        contact: "9000090000"
+        name: "Mayank jaiswal",
+        email: "mayankjaiswal20180@gmail.com.com",
+        contact: "9340163319"
       },
       notes: {
-        "address": "Razorpay Corporate Office"
+        "address": "indore M.p"
       },
       theme: {
         "color": "#3399cc"
       }
     };
     const razor = new window.Razorpay(options);
-   
-      razor.open();
-   
+
+    razor.open();
+
   }
   return (
     <Box>

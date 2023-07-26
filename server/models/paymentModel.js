@@ -17,4 +17,5 @@ const paymentSchema = new mongoose.Schema({
         requird: true,
     }
 });
+paymentSchema.set('timestamps', true)
 export const Payment = mongoose.model("Payment", paymentSchema);
